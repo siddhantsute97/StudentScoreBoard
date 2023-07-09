@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Score Board</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Student Information</h1>
+  <hr>
+  <a href="addstudent"><button class="btn btn-success">ADD Student</button></a>
+  <a href="report" class="btn btn-success">Merit List</a>
+  <table class="table table-bordered">
+    <tr>
+      <th>STUDENT ID</th>
+      <th>FIRST NAME</th>
+      <th>LAST NAME</th>
+      <th>DOB</th>
+      <th>PARENT'S NAME</th>
+      <th>ADDRESS</th>
+      <th>CITY</th>
+      <th>PHONE</th>
+    </tr>
+    <tr th:each="student:${records}">
+      <td th:text="${student.studentId}"></td>
+      <td th:text="${student.fName}"></td>
+      <td th:text="${student.lName}"></td>
+      <td th:text="${student.dob}"></td>
+      <td th:text="${student.parentName}"></td>
+      <td th:text="${student.address}"></td>
+      <td th:text="${student.city}"></td>
+      <td th:text="${student.phone}"></td>
+      <td>
+        <!-- Added View button with the link to viewsubjectmarks -->
+        <a th:href="@{/student/{studentId}/subjects(studentId=${student.studentId})}"
+           class="btn btn-primary">View Subjects</a>
+        <!-- Added Add Subject button with the link to addsubjectmarks -->
+        <a th:href="@{/student/{studentId}/addsubjectmarks(studentId=${student.studentId})}"
+           class="btn btn-primary">ADD Subject</a>
+      </td>
+    </tr>
+  </table>
+  <hr>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!-- student-subjects.html -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Subjects</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Student Subjects</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Subject ID</th>
+            <th>Subject Name</th>
+            <th>Marks</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the subjects and display the data -->
+        <tr th:each="subject : ${subjects}">
+            <td th:text="${subject.subjectId}"></td>
+            <td th:text="${subject.subjectName}"></td>
+            <td th:text="${subject.marks}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
